@@ -1,0 +1,19 @@
+# Response headers for Cloudflare Pages. Ignored by GitHub Pages, which has no
+# equivalent — serving this site from Cloudflare is what makes the file take effect.
+
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), microphone=(), payment=(), usb=()
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; connect-src 'self' https://cloudflareinsights.com; upgrade-insecure-requests
+
+# The site is four hand-written pages; caching them hard would make a copy fix
+# take a day to appear. The font files are the only heavy assets and Google
+# serves those itself.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/icon.svg
+  Cache-Control: public, max-age=86400
