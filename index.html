@@ -1404,12 +1404,12 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
 
   // ---- swipe between tabs, the way the app does
   var sx = 0, sy = 0, tracking = false;
-  var screen = document.querySelector(".hero .screen");
+  var scr = document.querySelector(".hero .screen");
 
-  screen.addEventListener("pointerdown", function (e) {
+  if (scr) scr.addEventListener("pointerdown", function (e) {
     tracking = true; sx = e.clientX; sy = e.clientY;
   });
-  screen.addEventListener("pointerup", function (e) {
+  if (scr) scr.addEventListener("pointerup", function (e) {
     if (!tracking) return;
     tracking = false;
     var dx = e.clientX - sx, dy = e.clientY - sy;
@@ -1419,14 +1419,24 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     if (i < 0 || i >= ORDER.length) return;
     setTab(ORDER[i], dx < 0 ? 1 : -1);
   });
-  screen.addEventListener("pointercancel", function () { tracking = false; });
+  if (scr) scr.addEventListener("pointercancel", function () { tracking = false; });
 
   // ---- it demonstrates itself until someone takes over
   var autoTimer = null, autoOn = false;
 
+  var autoTaken = false;          // true once a person has actually taken over
+
   function stopAuto() {
+    autoTaken = true;
     autoOn = false;
     clearTimeout(autoTimer);
+    autoTimer = null;
+  }
+
+  function pauseAuto() {           // leaving the viewport only pauses
+    autoOn = false;
+    clearTimeout(autoTimer);
+    autoTimer = null;
   }
 
   function autoStep(i) {
@@ -1436,16 +1446,22 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     autoTimer = setTimeout(function () {
       if (!autoOn) return;
       if (body.scrollHeight > body.clientHeight) {
-        body.scrollTo({ top: body.scrollHeight, behavior: "smooth" });
+        try { body.scrollTo({ top: body.scrollHeight, behavior: "smooth" }); }
+        catch (err) { body.scrollTop = body.scrollHeight; }
       }
       autoTimer = setTimeout(function () { autoStep(i + 1); }, 2700);
     }, 1600);
   }
 
-  // Any touch of the phone hands control over for good.
-  ["pointerdown", "keydown", "wheel"].forEach(function (ev) {
-    document.querySelector(".hero .phone").addEventListener(ev, stopAuto, { passive: true });
-  });
+  // A real tap or key hands control over. Deliberately NOT pointerdown: on a
+  // phone that fires while scrolling the page past the handset, which killed
+  // the demo before it ever ran.
+  var heroPhone = document.querySelector(".hero .phone");
+  if (heroPhone) {
+    heroPhone.addEventListener("click", stopAuto, { passive: true });
+    heroPhone.addEventListener("keydown", stopAuto, { passive: true });
+    heroPhone.addEventListener("wheel", stopAuto, { passive: true });
+  }
 
   document.getElementById("reset").addEventListener("click", function () {
     state = clone();
@@ -1537,14 +1553,13 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
   if (!reduced && "IntersectionObserver" in window) {
     var heroIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting && autoOn === false && autoTimer === null) {
-          autoOn = true;
-          autoStep(0);
-        } else if (!e.isIntersecting) {
-          stopAuto();
+        if (e.isIntersecting) {
+          if (!autoTaken && !autoOn) { autoOn = true; autoStep(0); }
+        } else {
+          pauseAuto();
         }
       });
-    }, { threshold: 0.4 });
+    }, { threshold: 0.25 });
     heroIO.observe(document.querySelector(".hero .phone"));
   }
 })();
