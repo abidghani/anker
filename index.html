@@ -325,7 +325,7 @@ h1 .ln2 { display: block; opacity: 0.74; white-space: nowrap; }
 .app-meta { font-size: 12.5px; color: var(--muted); }
 
 .tabs-body { flex: 1; overflow-y: auto; padding: 0 14px 14px; scrollbar-width: none; scroll-behavior: smooth; }
-.tabs-body.swap { animation: swap .3s cubic-bezier(.25,.8,.3,1); }
+.tabs-body.swap { animation: swap .22s cubic-bezier(.25,.8,.3,1); }
 @keyframes swap { from { opacity: 0; transform: translateX(var(--dir, 14px)); } }
 .hero .screen { touch-action: pan-y; }
 .tabs-body::-webkit-scrollbar { display: none; }
@@ -1439,6 +1439,9 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     autoTimer = null;
   }
 
+  var HOLD = 850;     // beat before the list starts scrolling
+  var READ = 1450;    // time on the scrolled list before the next tab
+
   function autoStep(i) {
     if (!autoOn) return;
     setTab(ORDER[i % ORDER.length], 1);
@@ -1449,8 +1452,8 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
         try { body.scrollTo({ top: body.scrollHeight, behavior: "smooth" }); }
         catch (err) { body.scrollTop = body.scrollHeight; }
       }
-      autoTimer = setTimeout(function () { autoStep(i + 1); }, 2700);
-    }, 1600);
+      autoTimer = setTimeout(function () { autoStep(i + 1); }, READ);
+    }, HOLD);
   }
 
   // A real tap or key hands control over. Deliberately NOT pointerdown: on a
