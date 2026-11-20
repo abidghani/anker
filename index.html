@@ -50,6 +50,7 @@ html { overflow-x: clip; max-width: 100%; }
   --aqua:      #5FE3D1;
   --dawn:      rgba(255,138,92,0.10);
   --grad-type: linear-gradient(102deg, #F2EFFC 0%, #CFC2FF 34%, #8FE8DC 68%, #F2EFFC 100%);
+  --h1-line2:  #CFC2FF;
   --grad-fig:  linear-gradient(135deg, #D6CCFF, #7FF0DF);
   color-scheme: dark;
 
@@ -79,6 +80,7 @@ html { overflow-x: clip; max-width: 100%; }
   --aqua:      #11998E;
   --dawn:      rgba(255,138,92,0.09);
   --grad-type: linear-gradient(102deg, #15121F 0%, #4B35C9 36%, #0E8C82 68%, #15121F 100%);
+  --h1-line2:  #4B35C9;
   --grad-fig:  linear-gradient(135deg, #5A46DE, #0E8C82);
   color-scheme: light;
 }
@@ -257,7 +259,12 @@ h1 .pp {
   font-style: italic; white-space: nowrap;
   background: none; -webkit-text-fill-color: var(--paper); color: var(--paper);
 }
-h1 .ln2 { display: block; opacity: 0.74; white-space: nowrap; }
+h1 .ln2 {
+  display: block; white-space: nowrap;
+  color: var(--h1-line2);
+  -webkit-text-fill-color: var(--h1-line2);
+  background: none;
+}
 @media (max-width: 620px) { h1 .ln2, h1 .pp { white-space: normal; } }
 .lede {
   margin: 26px 0 0;
