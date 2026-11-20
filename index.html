@@ -469,12 +469,7 @@ h1 .ln2 { display: block; opacity: 0.74; white-space: nowrap; }
 /* Banners arriving the way they do on a night shift: one at a time, each
    landing on top of the last, the unanswered one still pulsing. */
 
-.bleeps {
-  position: relative;
-  height: 232px;
-  margin-top: 28px;
-  max-width: 408px;
-}
+.bleeps { position: relative; height: 244px; max-width: 420px; }
 .bleeps-head {
   display: flex; align-items: center; gap: 9px;
   font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.06em;
@@ -551,42 +546,122 @@ h1 .ln2 { display: block; opacity: 0.74; white-space: nowrap; }
   .bleeps { height: auto; }
 }
 
-/* ---------- the claim, demonstrated ---------- */
-/* The headline says "faster than pen and paper". This is the only place the
-   page actually shows it: the same job, done both ways, side by side. */
 
-.versus { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.versus-in { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); }
-.vs-col { background: var(--bg); padding: 36px 30px 32px; position: relative; }
-.vs-col.anker { background: color-mix(in srgb, var(--accent) 5%, var(--bg)); }
+/* ---------- additions for the rewrite ---------- */
 
-.vs-head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-bottom: 22px; }
-.vs-who { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--muted); }
-.vs-col.anker .vs-who { color: var(--accent-up); }
-.vs-task { font-size: 13.5px; color: var(--muted); }
-
-.vs-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; }
-.vs-steps li { display: flex; gap: 14px; align-items: baseline; font-size: 16px; line-height: 1.45; color: var(--muted); }
-.vs-steps li b {
-  font-family: var(--f-mono); font-size: 11.5px; font-weight: 400;
-  color: var(--line-firm); flex: none; width: 14px; font-variant-numeric: tabular-nums;
+.by-line {
+  margin: 16px 0 0; font-family: var(--f-display); font-style: italic;
+  font-size: 19px; color: var(--paper); opacity: .92;
 }
-/* the paper column borrows the headline's italic — it is the old way */
-.vs-col.paper .vs-steps li { font-family: var(--f-display); font-style: italic; font-size: 19px; color: var(--paper); opacity: 0.86; }
-.vs-col.paper .vs-steps li b { font-style: normal; font-family: var(--f-mono); }
-.vs-col.anker .vs-steps li { color: var(--fg); }
-.vs-col.anker .vs-steps li b { color: var(--accent); }
 
-.vs-count { margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
-.vs-count strong {
-  font-family: var(--f-display); font-weight: 400; font-size: 30px; line-height: 1;
-  margin-right: 10px; vertical-align: -3px; color: var(--paper);
+/* not a link yet — the app has not shipped, so it must not look clickable */
+.btn-soon {
+  background: transparent; color: var(--fg);
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  box-shadow: none; cursor: default;
+  padding: 0 24px;
 }
-.vs-col.anker .vs-count strong { background: var(--grad-fig); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.btn-soon::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--aqua); box-shadow: 0 0 10px var(--aqua); flex: none;
+}
+.btn-soon:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); transform: none; }
 
-@media (max-width: 760px) {
-  .versus-in { grid-template-columns: minmax(0,1fr); }
-  .vs-col { padding: 28px 22px; }
+/* ---- the problem ---- */
+.problem { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.problem-in { padding-block: 72px; display: grid; gap: 22px; max-width: 1120px; }
+.problem h2 { font-size: clamp(30px, 4.4vw, 48px); line-height: 1.1; }
+.problem h2 span { display: block; color: var(--muted); }
+.problem p { margin: 0; font-size: 18.5px; line-height: 1.6; color: var(--muted); max-width: 40em; }
+
+/* ---- feature rows now lead with a bold phrase ---- */
+.feat-list li b { color: var(--fg); font-weight: 600; }
+.feat-txt { min-width: 0; }
+.feat-list li.done b { color: var(--fg); }
+.feat-aside {
+  margin: 0; font-size: 16.5px; line-height: 1.6; color: var(--muted);
+  padding: 20px 22px; border-left: 2px solid var(--line-firm); border-radius: 0 12px 12px 0;
+  background: color-mix(in srgb, var(--panel) 40%, transparent);
+}
+
+/* ---- segmented control inside the handset ---- */
+.seg {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3px;
+  margin: 0 14px 10px; padding: 3px;
+  background: var(--panel-2); border-radius: 11px;
+}
+.seg button {
+  border: 0; border-radius: 9px; padding: 7px 4px; cursor: pointer;
+  background: transparent; color: var(--muted);
+  font-family: var(--f-body); font-size: 12.5px; font-weight: 500;
+}
+.seg button[aria-selected="true"] { background: var(--accent); color: #fff; }
+.seg.static button { cursor: default; }
+
+/* ---- patient card, the carousel view ---- */
+.pcard { background: var(--panel-2); border-radius: 16px; padding: 13px 13px 9px; margin-bottom: 8px; }
+.pcard-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 9px; }
+.pcard-bed { font-family: var(--f-mono); font-size: 12px; color: var(--fg); }
+.pcard-ward { font-family: var(--f-mono); font-size: 10px; color: var(--muted); letter-spacing: .05em; }
+.pcard .job { background: transparent; padding: 9px 0; margin: 0; border-top: 1px solid var(--line); }
+.pdots { display: flex; justify-content: center; gap: 6px; padding: 4px 0 2px; }
+.pdots i { width: 5px; height: 5px; border-radius: 50%; background: var(--line-firm); }
+.pdots i.on { background: var(--accent); }
+
+/* ---- end of shift ---- */
+.reset-band {
+  margin-block: 90px 0; padding: 40px 38px;
+  border: 1px solid var(--line); border-radius: 22px;
+  background: color-mix(in srgb, var(--panel) 45%, transparent);
+  display: flex; align-items: center; justify-content: space-between; gap: 36px;
+}
+.reset-band h2 { font-size: clamp(26px, 3.4vw, 36px); }
+.reset-band p { margin: 12px 0 0; color: var(--muted); font-size: 16.5px; max-width: 46ch; }
+.reset-art { width: 92px; height: 92px; flex: none; color: var(--accent-up); opacity: .8; }
+
+/* ---- the story ---- */
+.origin-by { margin-top: 22px !important; color: var(--fg) !important; font-size: 16px !important; }
+.origin-by strong { font-weight: 600; }
+.origin-paper {
+  background: #15131F; border: 1px solid var(--line); border-radius: 14px;
+  padding: 24px 26px; display: grid; gap: 11px;
+  transform: rotate(-1.4deg);
+  box-shadow: 0 24px 48px -28px rgba(0,0,0,.8);
+}
+.paper-line {
+  font-family: var(--f-display); font-style: italic; font-size: 18px;
+  color: var(--paper); position: relative; opacity: .9;
+}
+.paper-line.struck { opacity: .45; }
+.paper-line.struck::after {
+  content: ""; position: absolute; left: -4px; right: -4px; top: 54%;
+  height: 1.5px; background: var(--paper); opacity: .7;
+}
+
+/* ---- principle icons for the new three ---- */
+.ic-row { transform-origin: center; }
+.ic-row2 { animation: simplify 4s ease-in-out infinite; }
+.ic-row3 { animation: simplify 4s ease-in-out infinite .35s; }
+@keyframes simplify {
+  0%, 30% { opacity: 1; transform: translateX(0); }
+  55%, 80% { opacity: .25; transform: translateX(7px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+.ic-sweep { stroke-dasharray: 101; stroke-dashoffset: 101; animation: shift-arc 4.5s ease-in-out infinite; }
+@keyframes shift-arc {
+  0%, 6% { stroke-dashoffset: 101; }
+  55%, 80% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 101; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ic-row2, .ic-row3, .ic-sweep { animation: none; }
+  .ic-sweep { stroke-dashoffset: 0; }
+}
+
+@media (max-width: 860px) {
+  .reset-band { flex-direction: column-reverse; align-items: flex-start; gap: 22px; padding: 30px 24px; }
+  .reset-art { width: 68px; height: 68px; }
+  .origin-paper { transform: none; }
 }
 
 /* ---------- sections ---------- */
@@ -928,8 +1003,8 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
       <span class="mark-name">Anker</span>
     </a>
     <nav>
-      <a href="#round">Ward round</a>
-      <a href="#oncall">On-call</a>
+      <a href="#patients">Patients</a>
+      <a href="#bleeps">Bleeps</a>
       <a href="#notes">Notes</a>
       <a href="#privacy">Privacy</a>
     </nav>
@@ -938,7 +1013,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
         <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
       </svg>
     </button>
-    <a class="btn" href="https://apps.apple.com/gb/search?term=Anker">Download</a>
+    <span class="btn btn-soon">Coming soon</span>
   </div>
 </header>
 
@@ -948,32 +1023,27 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="hero-in">
       <div>
-        <h1>Faster than <span class="pp">pen and paper.</span><span class="ln2">Built for the ward.</span></h1>
-        <p class="lede">The task list for NHS resident doctors. <strong>Log, track and finish patient jobs</strong> on ward rounds and on call — one hand, no popups, nothing to sync.</p>
+        <h1>Your paper list.<span class="ln2">Just a little <span class="pp">smarter</span>.</span></h1>
+        <p class="lede">A simple task list for doctors. Keep track of your <strong>patients, jobs, notes and bleeps</strong>, all in one place.</p>
+        <p class="by-line">Built by a junior doctor, for the reality of a busy shift.</p>
         <div class="hero-cta">
-          <a class="btn" href="https://apps.apple.com/gb/search?term=Anker">Download on the App Store</a>
-          <a class="btn btn-ghost" href="#round">See how it works</a>
+          <span class="btn btn-soon">Coming soon to the App&nbsp;Store</span>
         </div>
         <p class="free-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg><b>Free to install and use.</b> <span>No account needed.</span></p>
-        <p class="live-note"><span class="pulse" aria-hidden="true"></span> The phone is live. Tick a job, log a bleep, add a note.</p>
-
-        <div class="bleeps" aria-hidden="true">
-          <p class="bleeps-head"><b>3</b> OPEN BLEEPS · TONIGHT</p>
-          <div class="bleep-pop"><span class="bleep-dot"></span><span class="bleep-body"><span class="bleep-from"><span>WARD 9 · BED 4</span><span class="bleep-tag">UNANSWERED</span></span><span class="bleep-msg">Fluids review</span></span></div>
-          <div class="bleep-pop"><span class="bleep-dot"></span><span class="bleep-body"><span class="bleep-from"><span>AMU · BED 21</span><span class="bleep-tag">UNANSWERED</span></span><span class="bleep-msg">Chest pain — ECG done</span></span></div>
-          <div class="bleep-pop calm"><span class="bleep-dot"></span><span class="bleep-body"><span class="bleep-from"><span>WARD 7B · BED 12</span><span class="bleep-tag">RESOLVED</span></span><span class="bleep-msg">Analgesia prescribed</span></span></div>
-          <div class="bleep-pop"><span class="bleep-dot"></span><span class="bleep-body"><span class="bleep-from"><span>WARD 4 · BED 2</span><span class="bleep-tag">UNANSWERED</span></span><span class="bleep-msg">Cannula — for IV abx</span></span></div>
-        </div>
-
+        <p class="live-note"><span class="pulse" aria-hidden="true"></span> The phone is live. Switch views, tick a job, add a note.</p>
       </div>
 
-      <div>
+      <div class="hero-phone-col">
         <div class="phone">
           <div class="screen">
-            <div class="statusbar"><span class="mono" id="clock">02:47</span><span class="dots" aria-hidden="true">●●●</span></div>
+            <div class="statusbar"><span class="mono" id="clock">02:47</span><span class="dots" aria-hidden="true">&#9679;&#9679;&#9679;</span></div>
             <div class="app-top">
               <span class="app-title" id="scr-title">People</span>
-              <span class="app-meta" id="scr-meta">4 jobs remaining</span>
+              <span class="app-meta" id="scr-meta">7 jobs remaining</span>
+            </div>
+            <div class="seg" id="seg" role="tablist" aria-label="Patient view or all jobs">
+              <button type="button" role="tab" data-view="patient" aria-selected="true">Patients</button>
+              <button type="button" role="tab" data-view="all" aria-selected="false">All Jobs</button>
             </div>
             <div class="tabs-body" id="body"></div>
             <div class="composer" id="composer" hidden>
@@ -1004,80 +1074,42 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     </div>
   </div>
 
-
-
-  <div class="versus">
-    <div class="wrap">
-      <div class="versus-in">
-        <div class="vs-col paper">
-          <div class="vs-head">
-            <span class="vs-who">ON PAPER</span>
-            <span class="vs-task">Bed 12 needs a repeat U&amp;E</span>
-          </div>
-          <ol class="vs-steps">
-            <li><b>01</b>Find a pen</li>
-            <li><b>02</b>Find the list in your pocket</li>
-            <li><b>03</b>Write it down</li>
-            <li><b>04</b>Read your own writing at 04:00</li>
-            <li><b>05</b>Copy it out again at handover</li>
-          </ol>
-          <p class="vs-count"><strong>5</strong> steps, and the list only exists in one pocket</p>
-        </div>
-
-        <div class="vs-col anker">
-          <div class="vs-head">
-            <span class="vs-who">IN ANKER</span>
-            <span class="vs-task">Bed 12 needs a repeat U&amp;E</span>
-          </div>
-          <ol class="vs-steps">
-            <li><b>01</b>Tap the patient</li>
-            <li><b>02</b>Type the job</li>
-          </ol>
-          <p class="vs-count"><strong>2</strong> taps, and it sorts, flags and counts itself</p>
-        </div>
-      </div>
+  <!-- ===== the problem ===== -->
+  <div class="problem">
+    <div class="wrap problem-in">
+      <h2>The jobs keep coming.<span>The list keeps growing.</span></h2>
+      <p>Between ward rounds, jobs, bleeps and constant interruptions, it&rsquo;s easy for your list to become a mess. Anker keeps everything together, so you can see what needs doing and what you&rsquo;ve already done.</p>
     </div>
   </div>
 
-  <div class="wrap">
-    <div class="sec-head">
-      <h2>Ward rounds. On-call shifts. One hand free.</h2>
-      <p>Resident doctors carry notes, a bleep and a drink round a ward. Anker is designed for the hand that's left, with speed and reliability treated as clinical requirements rather than polish.</p>
-    </div>
-  </div>
-
-  <!-- ===== Ward round ===== -->
-  <section id="round" class="wrap">
+  <!-- ===== Patients ===== -->
+  <section id="patients" class="wrap">
     <div class="rail">
       <div class="rail-time"><span>02:47</span></div>
       <div class="feat">
-        <h2><span class="kicker">Ward round</span>Every job from the round, in one list.</h2>
-        <p>Swipe through patients as you walk the ward. Mark each job not started, in progress or done, and flag the ones that can't wait.</p>
+        <h2><span class="kicker">Patients</span>Know what&rsquo;s done, see what&rsquo;s left.</h2>
+        <p>Keep your patients and their jobs together in one simple list. Tick off tasks as you go, flag the ones that can&rsquo;t wait, and switch to All Jobs to see everything outstanding across your wards.</p>
         <div class="feat-grid">
           <ul class="feat-list">
-            <li><span class="tick" aria-hidden="true"></span>Ward selector across multiple wards — add, rename, delete</li>
-            <li><span class="tick" aria-hidden="true"></span>Horizontal patient carousel, one card per patient</li>
-            <li><span class="tick" aria-hidden="true"></span>Three-state checkbox per job: not started, in progress, done</li>
-            <li><span class="tick" aria-hidden="true"></span>Urgent flag per job — red while outstanding, grey once complete</li>
-            <li><span class="tick" aria-hidden="true"></span>All Jobs view across every ward, with a jobs-remaining count</li>
-            <li><span class="tick" aria-hidden="true"></span>Sort by urgency, oldest or newest</li>
-            <li><span class="tick" aria-hidden="true"></span>Completed jobs always sort to the bottom</li>
-            <li><span class="tick" aria-hidden="true"></span>Clear all ward round data from Settings</li>
+            <li><span class="tick" aria-hidden="true"></span><span class="feat-txt"><b>Two views.</b> See your jobs organised by individual patient, or everything together in All Jobs.</span></li>
+            <li><span class="tick" aria-hidden="true"></span><span class="feat-txt"><b>Multiple wards.</b> Keep track of patients and jobs across different wards.</span></li>
+            <li><span class="tick" aria-hidden="true"></span><span class="feat-txt"><b>Prioritise what matters.</b> Flag urgent jobs and sort your list by urgency or ward.</span></li>
           </ul>
           <div class="shot">
             <div class="phone">
               <div class="screen">
-                <div class="statusbar"><span class="mono">02:47</span><span class="dots" aria-hidden="true">●●●</span></div>
-                <div class="app-top"><span class="app-title">Ward 7B</span><span class="app-meta">14 remaining</span></div>
+                <div class="statusbar"><span class="mono">02:47</span><span class="dots" aria-hidden="true">&#9679;&#9679;&#9679;</span></div>
+                <div class="app-top"><span class="app-title">People</span><span class="app-meta">14 remaining</span></div>
+                <div class="seg static"><button type="button" aria-selected="false" tabindex="-1">Patients</button><button type="button" aria-selected="true" tabindex="-1">All Jobs</button></div>
                 <div class="tabs-body">
-                  <div class="grp-label">BED 12 · 4 JOBS</div>
+                  <div class="grp-label">WARD 7B &middot; BED 12</div>
                   <div class="job"><span class="cb" data-s="1"></span><span class="job-txt">Chase CT head report</span><span class="flag" data-on="1"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3v18h2v-7h12l-3-4 3-4H7V3z"/></svg></span></div>
                   <div class="job"><span class="cb" data-s="0"></span><span class="job-txt">Repeat U&amp;Es, then review K+</span><span class="flag" data-on="1"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3v18h2v-7h12l-3-4 3-4H7V3z"/></svg></span></div>
-                  <div class="job"><span class="cb" data-s="0"></span><span class="job-txt">Discharge letter draft</span><span class="flag" data-on="0"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3v18h2v-7h12l-3-4 3-4H7V3z"/></svg></span></div>
-                  <div class="job" data-done="1"><span class="cb" data-s="2"></span><span class="job-txt">Rewrite drug chart</span><span class="flag" data-on="0"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3v18h2v-7h12l-3-4 3-4H7V3z"/></svg></span></div>
-                  <div class="grp-label">BED 13 · 2 JOBS</div>
+                  <div class="grp-label">WARD 7B &middot; BED 13</div>
                   <div class="job"><span class="cb" data-s="0"></span><span class="job-txt">TTOs to pharmacy</span><span class="flag" data-on="0"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3v18h2v-7h12l-3-4 3-4H7V3z"/></svg></span></div>
-                  <div class="job"><span class="cb" data-s="1"></span><span class="job-txt">Speak to family re: ceiling of care</span><span class="flag" data-on="0"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3v18h2v-7h12l-3-4 3-4H7V3z"/></svg></span></div>
+                  <div class="job" data-done="1"><span class="cb" data-s="2"></span><span class="job-txt">Speak to family re: ceiling of care</span><span class="flag" data-on="0"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3v18h2v-7h12l-3-4 3-4H7V3z"/></svg></span></div>
+                  <div class="grp-label">AMU &middot; BED 21</div>
+                  <div class="job"><span class="cb" data-s="0"></span><span class="job-txt">Chest pain &mdash; repeat troponin</span><span class="flag" data-on="1"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3v18h2v-7h12l-3-4 3-4H7V3z"/></svg></span></div>
                 </div>
               </div>
             </div>
@@ -1087,35 +1119,32 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     </div>
   </section>
 
-  <!-- ===== On-call ===== -->
-  <section id="oncall" class="wrap">
+  <!-- ===== Bleep tracker ===== -->
+  <section id="bleeps" class="wrap">
     <div class="rail">
       <div class="rail-time"><span>03:12</span></div>
       <div class="feat">
-        <h2><span class="kicker">On-call</span>Log a bleep as it arrives. Track it until it's resolved.</h2>
-        <p>Each bleep moves from unanswered to answered to resolved, so nothing is lost between calls overnight.</p>
+        <h2><span class="kicker">Bleep tracker</span>Because one bleep is never the last.</h2>
+        <p>Log each bleep as it comes in, with the time received and a quick note about what it&rsquo;s for. Keep track of which ones you&rsquo;ve answered, which are still outstanding and which have been resolved.</p>
         <div class="feat-grid">
-          <ul class="feat-list">
-            <li><span class="tick" aria-hidden="true"></span>Persistent input bar — log a bleep while you're still on the phone</li>
-            <li><span class="tick" aria-hidden="true"></span>Status cycle: unanswered, answered, resolved</li>
-            <li><span class="tick" aria-hidden="true"></span>Colour-coded status button on every bleep</li>
-            <li><span class="tick" aria-hidden="true"></span>Expandable detail field per bleep</li>
-            <li><span class="tick" aria-hidden="true"></span>Patient management with the same three-state job tracking</li>
-            <li><span class="tick" aria-hidden="true"></span>Resolve or reopen a patient, with a greyed inactive state</li>
-            <li><span class="tick" aria-hidden="true"></span>Clear bleeps and patients from Settings</li>
-          </ul>
+          <div class="bleeps" aria-hidden="true">
+            <p class="bleeps-head"><b>3</b> OPEN BLEEPS &middot; TONIGHT</p>
+            <div class="bleep-pop"><span class="bleep-dot"></span><span class="bleep-body"><span class="bleep-from"><span>WARD 9 &middot; BED 4</span><span class="bleep-tag">UNANSWERED</span></span><span class="bleep-msg">Fluids review</span></span></div>
+            <div class="bleep-pop"><span class="bleep-dot"></span><span class="bleep-body"><span class="bleep-from"><span>AMU &middot; BED 21</span><span class="bleep-tag">UNANSWERED</span></span><span class="bleep-msg">Chest pain &mdash; ECG done</span></span></div>
+            <div class="bleep-pop calm"><span class="bleep-dot"></span><span class="bleep-body"><span class="bleep-from"><span>WARD 7B &middot; BED 12</span><span class="bleep-tag">RESOLVED</span></span><span class="bleep-msg">Analgesia prescribed</span></span></div>
+            <div class="bleep-pop"><span class="bleep-dot"></span><span class="bleep-body"><span class="bleep-from"><span>WARD 4 &middot; BED 2</span><span class="bleep-tag">UNANSWERED</span></span><span class="bleep-msg">Cannula &mdash; for IV abx</span></span></div>
+          </div>
           <div class="shot">
             <div class="phone">
               <div class="screen">
-                <div class="statusbar"><span class="mono">03:12</span><span class="dots" aria-hidden="true">●●●</span></div>
+                <div class="statusbar"><span class="mono">03:12</span><span class="dots" aria-hidden="true">&#9679;&#9679;&#9679;</span></div>
                 <div class="app-top"><span class="app-title">On-Call</span><span class="app-meta">3 open bleeps</span></div>
                 <div class="tabs-body">
-                  <div class="bleep"><span class="bleep-txt"><span class="bleep-where">WARD 9 · BED 4</span><span class="bleep-what">Fluids review</span></span><span class="chip" data-s="0">UNANSWERED</span></div>
-                  <div class="bleep"><span class="bleep-txt"><span class="bleep-where">AMU · BED 21</span><span class="bleep-what">Chest pain, ECG done</span></span><span class="chip" data-s="1">ANSWERED</span></div>
-                  <div class="bleep"><span class="bleep-txt"><span class="bleep-where">WARD 7B · BED 12</span><span class="bleep-what">Analgesia prescribed</span></span><span class="chip" data-s="2">RESOLVED</span></div>
-                  <div class="bleep"><span class="bleep-txt"><span class="bleep-where">WARD 4 · BED 2</span><span class="bleep-what">Cannula, for IV abx</span></span><span class="chip" data-s="0">UNANSWERED</span></div>
+                  <div class="bleep"><span class="bleep-txt"><span class="bleep-where">WARD 9 &middot; BED 4 &middot; 02:51</span><span class="bleep-what">Fluids review</span></span><span class="chip" data-s="0">ANSWER</span></div>
+                  <div class="bleep"><span class="bleep-txt"><span class="bleep-where">AMU &middot; BED 21 &middot; 02:58</span><span class="bleep-what">Chest pain, ECG done</span></span><span class="chip" data-s="1">ANSWERED</span></div>
+                  <div class="bleep"><span class="bleep-txt"><span class="bleep-where">WARD 7B &middot; BED 12 &middot; 03:04</span><span class="bleep-what">Analgesia prescribed</span></span><span class="chip" data-s="2">RESOLVED</span></div>
                 </div>
-                <div class="composer"><input type="text" placeholder="Log a bleep…" disabled><button type="button" tabindex="-1" aria-hidden="true">+</button></div>
+                <div class="composer"><input type="text" placeholder="Log a bleep&hellip;" disabled><button type="button" tabindex="-1" aria-hidden="true">+</button></div>
               </div>
             </div>
           </div>
@@ -1129,28 +1158,21 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     <div class="rail">
       <div class="rail-time"><span>04:30</span></div>
       <div class="feat">
-        <h2><span class="kicker">Notes</span>A place for everything that isn't a job yet.</h2>
-        <p>A shift notepad with photos and inline editing. It opens at your most recent note.</p>
+        <h2><span class="kicker">Notes</span>A place for everything that isn&rsquo;t a job yet.</h2>
+        <p>A digital scribble pad for all the little things you need to remember during a shift. Jot something down, add a photo, and come back to it when you need it.</p>
         <div class="feat-grid">
-          <ul class="feat-list">
-            <li><span class="tick" aria-hidden="true"></span>Chat-style notes on a dot-pattern background</li>
-            <li><span class="tick" aria-hidden="true"></span>Attach a photo from the camera roll, or take one</li>
-            <li><span class="tick" aria-hidden="true"></span>Edit any note inline with the pencil</li>
-            <li><span class="tick" aria-hidden="true"></span>Dismiss or restore a note with a long press</li>
-            <li><span class="tick" aria-hidden="true"></span>Opens scrolled to your most recent note</li>
-            <li><span class="tick" aria-hidden="true"></span>Clear all notes from Settings</li>
-          </ul>
+          <p class="feat-aside">Not everything you need to remember is a patient job. Sometimes it&rsquo;s a message, a reminder, or something someone tells you in passing.</p>
           <div class="shot">
             <div class="phone">
               <div class="screen">
-                <div class="statusbar"><span class="mono">04:30</span><span class="dots" aria-hidden="true">●●●</span></div>
-                <div class="app-top"><span class="app-title">Notes</span><span class="app-meta">Tonight's shift</span></div>
+                <div class="statusbar"><span class="mono">04:30</span><span class="dots" aria-hidden="true">&#9679;&#9679;&#9679;</span></div>
+                <div class="app-top"><span class="app-title">Notes</span><span class="app-meta">Tonight&rsquo;s shift</span></div>
                 <div class="tabs-body">
                   <div class="note">Reg wants a call back after the CT<time>01:58</time></div>
                   <div class="note">Keys for the drug cupboard are with the nurse in charge<time>03:40</time></div>
-                  <div class="note">Bed 12 family coming at 9 — handover to day team<time>04:21</time></div>
+                  <div class="note">Bed 12 family coming at 9 &mdash; handover to day team<time>04:21</time></div>
                 </div>
-                <div class="composer"><input type="text" placeholder="Add a note…" disabled><button type="button" tabindex="-1" aria-hidden="true">+</button></div>
+                <div class="composer"><input type="text" placeholder="Add a note&hellip;" disabled><button type="button" tabindex="-1" aria-hidden="true">+</button></div>
               </div>
             </div>
           </div>
@@ -1159,18 +1181,39 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     </div>
   </section>
 
-  <!-- ===== Origin ===== -->
+  <!-- ===== end of shift ===== -->
+  <div class="wrap">
+    <div class="reset-band">
+      <div>
+        <h2>New shift. Fresh start.</h2>
+        <p>Finished for the day? Clear your patients, jobs, notes and bleeps when you no longer need them, ready for your next shift.</p>
+      </div>
+      <svg class="reset-art" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+        <circle cx="60" cy="60" r="44" stroke="currentColor" stroke-width="2" stroke-dasharray="6 9" opacity=".45"/>
+        <path d="M60 24a36 36 0 1 1-25.5 10.6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <path d="M34 22v14h14" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ===== the story ===== -->
   <div class="wrap">
     <div class="origin">
       <div>
-        <h2>Designed by a resident doctor, around her own shifts.</h2>
-        <p>Anker started with a list of the ten things that slowed a resident doctor down most during a shift. Keeping track of jobs on ward rounds and on call came top, so that is what the app does and all it does.</p>
-        <p>A working prototype was built in a weekend, then refined over six weeks of real use on the ward before the first release.</p>
+        <h2>Built by a junior doctor, for junior doctors.</h2>
+        <p>Anker started because I was tired of trying to keep track of everything on a folded piece of paper. During a busy shift, you&rsquo;re constantly adding jobs, crossing things out, answering bleeps and scribbling reminders wherever there&rsquo;s space.</p>
+        <p>I wanted something that worked like my paper list, but made it easier to see what was left to do and what needed my attention first.</p>
+        <p>What started as a weekend prototype has been shaped by weeks of real use on the ward.</p>
+        <p class="origin-by">Created by <strong>Dr Maryam Ghani</strong>, a UK junior doctor.</p>
       </div>
-      <div class="pull">
-        <span class="ph">QUOTE TO BE SUPPLIED</span>
-        <q>Placeholder — Dr Maryam Ghani on why she wanted this app. Replace before launch.</q>
-        <p class="byline">Dr Maryam Ghani MBBS<span>Clinical advisory</span></p>
+      <div class="origin-paper" aria-hidden="true">
+        <span class="paper-line struck">Bed 12 &mdash; CT head</span>
+        <span class="paper-line struck">Bed 12 &mdash; U&amp;Es</span>
+        <span class="paper-line">Bed 13 &mdash; TTOs</span>
+        <span class="paper-line">Bed 13 &mdash; family 9am</span>
+        <span class="paper-line struck">AMU 21 &mdash; trop</span>
+        <span class="paper-line">bleep ward 9 &mdash; fluids</span>
+        <span class="paper-line">?? drug cupboard keys</span>
       </div>
     </div>
   </div>
@@ -1178,61 +1221,72 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
   <!-- ===== Privacy ===== -->
   <section id="privacy" class="wrap">
     <div class="sec-head">
-      <h2>Your patients' details stay with you.</h2>
-      <p>Anker has no account, no login and no clinical sync. There is nowhere for a patient's details to go.</p>
+      <h2>Your patients&rsquo; details stay with you.</h2>
+      <p>Anker has no account, no login and no clinical sync. Your information stays on your device rather than being uploaded to an Anker server.</p>
     </div>
     <div class="nots">
       <span class="not"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 8.5l7 7"/></svg><span>No account</span></span>
       <span class="not"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 8.5l7 7"/></svg><span>No login</span></span>
-      <span class="not"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 8.5l7 7"/></svg><span>No cloud sync</span></span>
+      <span class="not"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 8.5l7 7"/></svg><span>No clinical sync</span></span>
       <span class="not"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 8.5l7 7"/></svg><span>No patient names</span></span>
-      <span class="not"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 8.5l7 7"/></svg><span>No tracking of what you type</span></span>
     </div>
 
     <div class="priv-wrap">
       <svg class="perimeter" aria-hidden="true" preserveAspectRatio="none"><rect/></svg>
-      <span class="perim-tag">ON DEVICE ONLY</span>
+      <span class="perim-tag">ON YOUR DEVICE</span>
       <div class="priv-grid">
-      <div class="priv">
-        <span class="priv-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18.5h2"/></svg></span>
-        <h3>Where it's stored</h3>
-        <p>On your iPhone, in the app's own storage. Ward round data, bleeps and notes never leave the device.</p>
-      </div>
-      <div class="priv">
-        <span class="priv-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h12l6 5-6 5H3z"/><circle cx="8" cy="12" r="1.3"/></svg></span>
-        <h3>What you can enter</h3>
-        <p>Bed number and initials. There is no field for a name, an NHS number or a date of birth.</p>
-      </div>
-      <div class="priv">
-        <span class="priv-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V5M16 20v-7M22 20H2"/></svg></span>
-        <h3>What's collected</h3>
-        <p>Anonymous crash and performance data only, so faults get fixed. Nothing you type is included.</p>
-      </div>
-      <div class="priv">
-        <span class="priv-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></span>
-        <h3>Clearing it</h3>
-        <p>Ward round data, bleeps and notes each clear separately from Settings at the end of a shift.</p>
-      </div>
+        <div class="priv">
+          <span class="priv-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18.5h2"/></svg></span>
+          <h3>Where it&rsquo;s stored</h3>
+          <p>On your iPhone, in the app&rsquo;s own storage. Patients, jobs, notes and bleeps are not uploaded to an Anker server.</p>
+        </div>
+        <div class="priv">
+          <span class="priv-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h12l6 5-6 5H3z"/><circle cx="8" cy="12" r="1.3"/></svg></span>
+          <h3>What you can enter</h3>
+          <p>Bed number and initials. There is no field for a name, an NHS number or a date of birth.</p>
+        </div>
+        <div class="priv">
+          <span class="priv-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V5M16 20v-7M22 20H2"/></svg></span>
+          <h3>What&rsquo;s collected</h3>
+          <p>Anonymous crash and performance data only, so faults get fixed. Nothing you type is included.</p>
+        </div>
+        <div class="priv">
+          <span class="priv-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></span>
+          <h3>Clearing it</h3>
+          <p>Patients, jobs, notes and bleeps each clear separately from Settings at the end of a shift.</p>
+        </div>
       </div>
     </div>
-    <p class="priv-foot">App data may be included in your iPhone's own encrypted device backups. Full detail is in the <a href="./privacy.html">privacy notice</a>.</p>
+    <p class="priv-foot">App data may be included in your iPhone&rsquo;s own encrypted device backups. Full detail is in the <a href="./privacy.html">privacy notice</a>.</p>
   </section>
 
-  <!-- ===== Principles ===== -->
+  <!-- ===== principles ===== -->
   <div class="wrap">
     <div class="sec-head"><h2>Our three principles.</h2></div>
     <div class="prin">
-      <div class="prin-card"><span class="prin-ic"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="27" r="13.5" stroke/><path d="M19.5 7.5h9M24 13.5V7.5M34 17l2.5-2.5" stroke/><line class="ic-hand" x1="24" y1="27" x2="24" y2="17.5" stroke/></svg></span><h3>Faster than pen and paper</h3><p>If an interaction is slower than writing it on a scrap of paper, it's wrong and it gets rebuilt.</p></div>
-      <div class="prin-card"><span class="prin-ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="13" y="5" width="22" height="38" rx="4.5" stroke/><rect class="ic-sheet" x="15.5" y="29" width="17" height="11.5" rx="3" stroke/><path class="ic-sheet" d="M20 33.5h8" stroke/></svg></span><h3>No modal popups</h3><p>Inline editing and bottom sheets that slide up. Nothing interrupts you mid-round to ask if you're sure.</p></div>
-      <div class="prin-card"><span class="prin-ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="13" y="5" width="22" height="38" rx="4.5" stroke/><path class="ic-arc" d="M15.5 38.5a11 11 0 0 1 17-9" stroke/><circle class="ic-thumb" cx="17" cy="38.5" r="2.4" stroke/></svg></span><h3>One hand free</h3><p>Every primary action sits in the bottom half of the screen, within reach of one thumb.</p></div>
+      <div class="prin-card">
+        <span class="prin-ic"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="27" r="13.5" stroke/><path d="M19.5 7.5h9M24 13.5V7.5M34 17l2.5-2.5" stroke/><line class="ic-hand" x1="24" y1="27" x2="24" y2="17.5" stroke/></svg></span>
+        <h3>Faster than pen and paper</h3>
+        <p>If it&rsquo;s more effort than scribbling something on paper, we need to make it simpler.</p>
+      </div>
+      <div class="prin-card">
+        <span class="prin-ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="10" width="30" height="7" rx="3.5" stroke class="ic-row ic-row1"/><rect x="9" y="21" width="30" height="7" rx="3.5" stroke class="ic-row ic-row2"/><rect x="9" y="32" width="30" height="7" rx="3.5" stroke class="ic-row ic-row3"/></svg></span>
+        <h3>Keep it simple</h3>
+        <p>No unnecessary features or complicated workflows. Just the things you actually need during a shift.</p>
+      </div>
+      <div class="prin-card">
+        <span class="prin-ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 34a16 16 0 0 1 32 0" stroke/><path class="ic-sweep" d="M8 34a16 16 0 0 1 32 0" stroke/><path d="M24 34V16M4 34h40" stroke/></svg></span>
+        <h3>Built around real shifts</h3>
+        <p>Designed from firsthand clinical experience, tested during actual shifts and improved based on what genuinely helps.</p>
+      </div>
     </div>
   </div>
 
   <div class="wrap">
     <div class="closing">
-      <h2>Leave the paper list in your pocket.</h2>
-      <p>Free on the App Store. No account, nothing to sync.</p>
-      <div><a class="btn" href="https://apps.apple.com/gb/search?term=Anker">Download on the App Store</a></div>
+      <h2>Your shift. Minus the chaos.</h2>
+      <p>Patients. Jobs. Notes. Bleeps. All in one place.</p>
+      <div><span class="btn btn-soon">Coming soon to the App&nbsp;Store</span></div>
     </div>
   </div>
 
@@ -1253,25 +1307,30 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
 
   var FLAG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3v18h2v-7h12l-3-4 3-4H7V3z"/></svg>';
 
+  // Sample data, kept as it was — these are the examples Maryam wanted to keep.
+  // A third ward was added so "multiple wards" is actually visible.
   var seed = {
     patients: [
-      { bed: "Bed 12 · JM", jobs: [
+      { ward: "Ward 7B", bed: "Bed 12", init: "JM", jobs: [
         { t: "Chase CT head report", s: 1, u: true },
         { t: "Repeat U&Es, then review K+", s: 0, u: true },
         { t: "Discharge letter draft", s: 0, u: false },
         { t: "Chase micro results", s: 0, u: false }
       ]},
-      { bed: "Bed 13 · AO", jobs: [
+      { ward: "Ward 7B", bed: "Bed 13", init: "AO", jobs: [
         { t: "TTOs to pharmacy", s: 0, u: false },
         { t: "Speak to family re: ceiling of care", s: 2, u: false },
-        { t: "Review NEWS2 — obs at 04:00", s: 0, u: true },
         { t: "Consent for OGD", s: 0, u: false }
+      ]},
+      { ward: "AMU", bed: "Bed 21", init: "RS", jobs: [
+        { t: "Chest pain — repeat troponin", s: 0, u: true },
+        { t: "Review NEWS2 — obs at 04:00", s: 0, u: true }
       ]}
     ],
     bleeps: [
-      { w: "Ward 9 · Bed 4", t: "Fluids review", s: 0 },
-      { w: "AMU · Bed 21", t: "Chest pain, ECG done", s: 1 },
-      { w: "Ward 7B · Bed 12", t: "Analgesia prescribed", s: 2 }
+      { w: "Ward 9 · Bed 4", at: "02:51", t: "Fluids review", s: 0 },
+      { w: "AMU · Bed 21", at: "02:58", t: "Chest pain, ECG done", s: 1 },
+      { w: "Ward 7B · Bed 12", at: "03:04", t: "Analgesia prescribed", s: 2 }
     ],
     notes: [
       { t: "Reg wants a call back after the CT", at: "01:58" },
@@ -1279,8 +1338,9 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     ]
   };
 
-  var state, tab = "people";
+  var state, tab = "people", view = "patient", pidx = 0;
   var body = document.getElementById("body");
+  var seg = document.getElementById("seg");
   var composer = document.getElementById("composer");
   var input = document.getElementById("composer-input");
   var addBtn = document.getElementById("composer-add");
@@ -1308,8 +1368,17 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     return String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0");
   }
 
+  function jobRow(j, pi, ji) {
+    return '<div class="job" data-done="' + (j.s === 2 ? 1 : 0) + '">' +
+      '<button class="cb" data-s="' + j.s + '" data-p="' + pi + '" data-j="' + ji + '" aria-label="Cycle status for ' + esc(j.t) + '"></button>' +
+      '<span class="job-txt">' + esc(j.t) + "</span>" +
+      '<button class="flag" data-on="' + (j.u ? 1 : 0) + '" data-fp="' + pi + '" data-fj="' + ji + '" aria-label="Toggle urgent for ' + esc(j.t) + '">' + FLAG + "</button>" +
+      "</div>";
+  }
+
   function render() {
     var h = "";
+    seg.hidden = (tab !== "people");
 
     if (tab === "people") {
       title.textContent = "People";
@@ -1317,17 +1386,40 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
       meta.textContent = n + (n === 1 ? " job remaining" : " jobs remaining");
       composer.hidden = true;
 
-      state.patients.forEach(function (p, pi) {
-        h += '<div class="grp-label">' + esc(p.bed.toUpperCase()) + "</div>";
+      if (view === "patient") {
+        // one card per patient, the way the carousel works in the app
+        if (pidx >= state.patients.length) pidx = 0;
+        var p = state.patients[pidx];
+        var left = p.jobs.filter(function (j) { return j.s !== 2; }).length;
+        h += '<div class="pcard">' +
+          '<div class="pcard-top">' +
+            '<span class="pcard-bed">' + esc(p.bed) + " · " + esc(p.init) + "</span>" +
+            '<span class="pcard-ward">' + esc(p.ward.toUpperCase()) + " · " + left + " LEFT</span>" +
+          "</div>";
         p.jobs.slice().sort(function (a, b) { return (a.s === 2) - (b.s === 2); }).forEach(function (j) {
-          var ji = p.jobs.indexOf(j);
-          h += '<div class="job" data-done="' + (j.s === 2 ? 1 : 0) + '">' +
-            '<button class="cb" data-s="' + j.s + '" data-p="' + pi + '" data-j="' + ji + '" aria-label="Cycle status for ' + esc(j.t) + '"></button>' +
-            '<span class="job-txt">' + esc(j.t) + "</span>" +
-            '<button class="flag" data-on="' + (j.u ? 1 : 0) + '" data-fp="' + pi + '" data-fj="' + ji + '" aria-label="Toggle urgent for ' + esc(j.t) + '">' + FLAG + "</button>" +
-            "</div>";
+          h += jobRow(j, pidx, p.jobs.indexOf(j));
         });
-      });
+        h += "</div>";
+        h += '<div class="pdots">';
+        state.patients.forEach(function (_, i) {
+          h += '<i class="' + (i === pidx ? "on" : "") + '" data-dot="' + i + '"></i>';
+        });
+        h += "</div>";
+
+      } else {
+        // everything outstanding, across every ward
+        var lastWard = null;
+        state.patients.forEach(function (p, pi) {
+          p.jobs.forEach(function (j, ji) {
+            var key = p.ward + " · " + p.bed;
+            if (key !== lastWard) {
+              h += '<div class="grp-label">' + esc(key.toUpperCase()) + "</div>";
+              lastWard = key;
+            }
+            h += jobRow(j, pi, ji);
+          });
+        });
+      }
 
     } else if (tab === "oncall") {
       title.textContent = "On-Call";
@@ -1335,10 +1427,10 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
       meta.textContent = open + (open === 1 ? " open bleep" : " open bleeps");
       composer.hidden = false;
       input.placeholder = "Log a bleep…";
-      var labels = ["UNANSWERED", "ANSWERED", "RESOLVED"];
+      var labels = ["ANSWER", "ANSWERED", "RESOLVED"];
       state.bleeps.forEach(function (b, i) {
         h += '<div class="bleep">' +
-          '<span class="bleep-txt"><span class="bleep-where">' + esc(b.w.toUpperCase()) + "</span>" +
+          '<span class="bleep-txt"><span class="bleep-where">' + esc(b.w.toUpperCase()) + " · " + esc(b.at) + "</span>" +
           '<span class="bleep-what">' + esc(b.t) + "</span></span>" +
           '<button class="chip" data-s="' + b.s + '" data-b="' + i + '" aria-label="Cycle status for ' + esc(b.t) + '">' + labels[b.s] + "</button>" +
           "</div>";
@@ -1377,13 +1469,27 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
       b.s = (b.s + 1) % 3;
       return render();
     }
+    var dot = e.target.closest("[data-dot]");
+    if (dot) { pidx = +dot.dataset.dot; return render(); }
+  });
+
+  // Patient view / All Jobs
+  Array.prototype.forEach.call(seg.querySelectorAll("button"), function (btn) {
+    btn.addEventListener("click", function () {
+      stopAuto();
+      view = btn.dataset.view;
+      Array.prototype.forEach.call(seg.querySelectorAll("button"), function (b) {
+        b.setAttribute("aria-selected", String(b === btn));
+      });
+      render();
+    });
   });
 
   function add() {
     var v = input.value.trim();
     if (!v) return;
     if (tab === "oncall") {
-      state.bleeps.unshift({ w: "New bleep", t: v, s: 0 });
+      state.bleeps.unshift({ w: "New bleep", at: stamp(), t: v, s: 0 });
     } else if (tab === "notes") {
       state.notes.push({ t: v, at: stamp() });
     }
@@ -1406,8 +1512,15 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     render();
     body.style.setProperty("--dir", (dir || 1) > 0 ? "14px" : "-14px");
     body.classList.remove("swap");
-    void body.offsetWidth;          // restart the animation
+    void body.offsetWidth;
     body.classList.add("swap");
+  }
+
+  function setView(v) {
+    view = v;
+    Array.prototype.forEach.call(seg.querySelectorAll("button"), function (b) {
+      b.setAttribute("aria-selected", String(b.dataset.view === v));
+    });
   }
 
   Array.prototype.forEach.call(tabBtns, function (btn) {
@@ -1418,7 +1531,6 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     });
   });
 
-  // ---- swipe between tabs, the way the app does
   var sx = 0, sy = 0, tracking = false;
   var scr = document.querySelector(".hero .screen");
 
@@ -1438,29 +1550,28 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
   if (scr) scr.addEventListener("pointercancel", function () { tracking = false; });
 
   // ---- it demonstrates itself until someone takes over
-  var autoTimer = null, autoOn = false;
+  var autoTimer = null, autoOn = false, autoTaken = false;
+  var HOLD = 650;
+  var READ = 1150;
 
-  var autoTaken = false;          // true once a person has actually taken over
+  function stopAuto() { autoTaken = true; autoOn = false; clearTimeout(autoTimer); autoTimer = null; }
+  function pauseAuto() { autoOn = false; clearTimeout(autoTimer); autoTimer = null; }
 
-  function stopAuto() {
-    autoTaken = true;
-    autoOn = false;
-    clearTimeout(autoTimer);
-    autoTimer = null;
-  }
-
-  function pauseAuto() {           // leaving the viewport only pauses
-    autoOn = false;
-    clearTimeout(autoTimer);
-    autoTimer = null;
-  }
-
-  var HOLD = 650;     // beat before the list starts scrolling
-  var READ = 1150;    // time on the scrolled list before the next tab
+  // People (patient view) → People (all jobs) → Notes → On-Call, then round again.
+  var SCRIPTED = [
+    { tab: "people", view: "patient" },
+    { tab: "people", view: "patient", patient: 1 },
+    { tab: "people", view: "all" },
+    { tab: "notes" },
+    { tab: "oncall" }
+  ];
 
   function autoStep(i) {
     if (!autoOn) return;
-    setTab(ORDER[i % ORDER.length], 1);
+    var step = SCRIPTED[i % SCRIPTED.length];
+    if (step.view) setView(step.view);
+    pidx = step.patient || 0;
+    if (step.tab === tab) render(); else setTab(step.tab, 1);
     body.scrollTop = 0;
     autoTimer = setTimeout(function () {
       if (!autoOn) return;
@@ -1472,9 +1583,6 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     }, HOLD);
   }
 
-  // A real tap or key hands control over. Deliberately NOT pointerdown: on a
-  // phone that fires while scrolling the page past the handset, which killed
-  // the demo before it ever ran.
   var heroPhone = document.querySelector(".hero .phone");
   if (heroPhone) {
     heroPhone.addEventListener("click", stopAuto, { passive: true });
@@ -1483,8 +1591,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
   }
 
   document.getElementById("reset").addEventListener("click", function () {
-    state = clone();
-    render();
+    state = clone(); pidx = 0; setView("patient"); render();
   });
 
   var themeBtn = document.getElementById("theme");
@@ -1500,76 +1607,58 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     if (saved === "light" || saved === "dark") document.documentElement.setAttribute("data-theme", saved);
   } catch (err) {}
 
-  // Feature rows tick through as each list is reached — the list is a job list,
-  // so it fills in the way one does. Text is readable before any of this runs.
-  var lists = document.querySelectorAll(".feat-list");
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  // Feature rows tick through as each list is reached.
+  var lists = document.querySelectorAll(".feat-list");
   function fill(list) {
-    var rows = list.querySelectorAll("li");
-    Array.prototype.forEach.call(rows, function (row, i) {
+    Array.prototype.forEach.call(list.querySelectorAll("li"), function (row, i) {
       if (reduced) { row.classList.add("done"); return; }
       setTimeout(function () {
         row.classList.add("half");
-        setTimeout(function () {
-          row.classList.remove("half");
-          row.classList.add("done");
-        }, 190);
-      }, 90 * i);
+        setTimeout(function () { row.classList.remove("half"); row.classList.add("done"); }, 190);
+      }, 110 * i);
     });
   }
 
-  if (!("IntersectionObserver" in window)) {
-    Array.prototype.forEach.call(lists, fill);
-  } else {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { fill(e.target); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.25 });
-    Array.prototype.forEach.call(lists, function (l) { io.observe(l); });
-  }
-
-  // The absence chips strike themselves through as the row is reached.
   var nots = document.querySelectorAll(".not");
-  if (nots.length) {
-    if (reduced || !("IntersectionObserver" in window)) {
-      Array.prototype.forEach.call(nots, function (n) { n.classList.add("struck"); });
-    } else {
-      var io2 = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (!e.isIntersecting) return;
-          var idx = Array.prototype.indexOf.call(nots, e.target);
-          setTimeout(function () { e.target.classList.add("struck"); }, 110 * idx);
-          io2.unobserve(e.target);
-        });
-      }, { threshold: 0.6 });
-      Array.prototype.forEach.call(nots, function (n) { io2.observe(n); });
-    }
-  }
-
-  // The gradient rule on each principle draws itself as the row is reached.
   var cards = document.querySelectorAll(".prin-card");
-  if (cards.length) {
-    if (reduced || !("IntersectionObserver" in window)) {
-      Array.prototype.forEach.call(cards, function (c) { c.classList.add("lit"); });
-    } else {
-      var io3 = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (!e.isIntersecting) return;
-          var i = Array.prototype.indexOf.call(cards, e.target);
-          setTimeout(function () { e.target.classList.add("lit"); }, 130 * i);
-          io3.unobserve(e.target);
-        });
-      }, { threshold: 0.4 });
-      Array.prototype.forEach.call(cards, function (c) { io3.observe(c); });
-    }
+
+  if (reduced || !("IntersectionObserver" in window)) {
+    Array.prototype.forEach.call(lists, fill);
+    Array.prototype.forEach.call(nots, function (n) { n.classList.add("struck"); });
+    Array.prototype.forEach.call(cards, function (c) { c.classList.add("lit"); });
+  } else {
+    var listIO = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { fill(e.target); listIO.unobserve(e.target); } });
+    }, { threshold: 0.25 });
+    Array.prototype.forEach.call(lists, function (l) { listIO.observe(l); });
+
+    var notIO = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var i = Array.prototype.indexOf.call(nots, e.target);
+        setTimeout(function () { e.target.classList.add("struck"); }, 110 * i);
+        notIO.unobserve(e.target);
+      });
+    }, { threshold: 0.6 });
+    Array.prototype.forEach.call(nots, function (n) { notIO.observe(n); });
+
+    var cardIO = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var i = Array.prototype.indexOf.call(cards, e.target);
+        setTimeout(function () { e.target.classList.add("lit"); }, 130 * i);
+        cardIO.unobserve(e.target);
+      });
+    }, { threshold: 0.4 });
+    Array.prototype.forEach.call(cards, function (c) { cardIO.observe(c); });
   }
 
   state = clone();
   render();
 
-  if (!reduced && "IntersectionObserver" in window) {
+  if (!reduced && "IntersectionObserver" in window && heroPhone) {
     var heroIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) {
@@ -1579,7 +1668,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
         }
       });
     }, { threshold: 0.25 });
-    heroIO.observe(document.querySelector(".hero .phone"));
+    heroIO.observe(heroPhone);
   }
 })();
 </script>
