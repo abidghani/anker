@@ -547,6 +547,24 @@ h1 .ln2 { display: block; opacity: 0.74; white-space: nowrap; }
 }
 
 
+
+/* ---------- App Store badge ---------- */
+/* Apple's own artwork, unmodified, self-hosted because the CSP only allows
+   'self' for images. 119.66x40 is their standard proportion and 40px their
+   minimum height for web; the clear space round it is their 1/10 rule. */
+.badge-link {
+  display: inline-block; line-height: 0;
+  padding: 6px;                 /* clear space, > 1/10 of the badge height */
+  margin: -6px;
+  border-radius: 10px;
+}
+.badge-link:focus-visible { outline: 2px solid var(--accent-up); outline-offset: 2px; }
+.badge-link img { height: 54px; width: auto; display: block; }
+.badge-link .badge-black { display: none; }
+:root[data-theme="light"] .badge-link .badge-white { display: none; }
+:root[data-theme="light"] .badge-link .badge-black { display: block; }
+@media (max-width: 480px) { .badge-link img { height: 48px; } }
+
 /* ---------- additions for the rewrite ---------- */
 
 .by-line {
@@ -1014,7 +1032,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
         <p class="lede">A simple task list for doctors. Keep track of your <strong>patients, jobs, notes and bleeps</strong>, all in one place.</p>
         <p class="by-line">Built by a junior doctor, for the reality of a busy shift.</p>
         <div class="hero-cta">
-          <a class="btn" href="https://apps.apple.com/gb/app/anker/id6760626289">Download on the App&nbsp;Store</a>
+          <a class="badge-link" href="https://apps.apple.com/gb/app/anker/id6760626289" aria-label="Download Anker on the App Store"><img class="badge-white" src="./appstore-badge-white.svg" alt="Download on the App Store" width="162" height="54"><img class="badge-black" src="./appstore-badge-black.svg" alt="Download on the App Store" width="162" height="54"></a>
         </div>
         <p class="free-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg><b>Free to install and use.</b> <span>No account needed.</span></p>
         <p class="live-note"><span class="pulse" aria-hidden="true"></span> The phone is live. Switch views, tick a job, add a note.</p>
@@ -1273,7 +1291,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     <div class="closing">
       <h2>Your shift. Minus the chaos.</h2>
       <p>Patients. Jobs. Notes. Bleeps. All in one place.</p>
-      <div><a class="btn" href="https://apps.apple.com/gb/app/anker/id6760626289">Download on the App&nbsp;Store</a></div>
+      <div><a class="badge-link" href="https://apps.apple.com/gb/app/anker/id6760626289" aria-label="Download Anker on the App Store"><img class="badge-white" src="./appstore-badge-white.svg" alt="Download on the App Store" width="162" height="54"><img class="badge-black" src="./appstore-badge-black.svg" alt="Download on the App Store" width="162" height="54"></a></div>
     </div>
   </div>
 
