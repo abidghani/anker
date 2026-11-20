@@ -554,19 +554,6 @@ h1 .ln2 { display: block; opacity: 0.74; white-space: nowrap; }
   font-size: 19px; color: var(--paper); opacity: .92;
 }
 
-/* not a link yet — the app has not shipped, so it must not look clickable */
-.btn-soon {
-  background: transparent; color: var(--fg);
-  border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
-  box-shadow: none; cursor: default;
-  padding: 0 24px;
-}
-.btn-soon::before {
-  content: ""; width: 7px; height: 7px; border-radius: 50%;
-  background: var(--aqua); box-shadow: 0 0 10px var(--aqua); flex: none;
-}
-.btn-soon:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); transform: none; }
-
 /* ---- the problem ---- */
 .problem { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .problem-in { padding-block: 72px; display: grid; gap: 22px; max-width: 1120px; }
@@ -1013,7 +1000,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
         <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
       </svg>
     </button>
-    <span class="btn btn-soon">Coming soon</span>
+    <a class="btn" href="https://apps.apple.com/gb/app/anker/id6760626289">Download</a>
   </div>
 </header>
 
@@ -1027,7 +1014,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
         <p class="lede">A simple task list for doctors. Keep track of your <strong>patients, jobs, notes and bleeps</strong>, all in one place.</p>
         <p class="by-line">Built by a junior doctor, for the reality of a busy shift.</p>
         <div class="hero-cta">
-          <span class="btn btn-soon">Coming soon to the App&nbsp;Store</span>
+          <a class="btn" href="https://apps.apple.com/gb/app/anker/id6760626289">Download on the App&nbsp;Store</a>
         </div>
         <p class="free-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg><b>Free to install and use.</b> <span>No account needed.</span></p>
         <p class="live-note"><span class="pulse" aria-hidden="true"></span> The phone is live. Switch views, tick a job, add a note.</p>
@@ -1286,7 +1273,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     <div class="closing">
       <h2>Your shift. Minus the chaos.</h2>
       <p>Patients. Jobs. Notes. Bleeps. All in one place.</p>
-      <div><span class="btn btn-soon">Coming soon to the App&nbsp;Store</span></div>
+      <div><a class="btn" href="https://apps.apple.com/gb/app/anker/id6760626289">Download on the App&nbsp;Store</a></div>
     </div>
   </div>
 
@@ -1294,8 +1281,6 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
 
 <footer>
   <div class="wrap foot-in">
-    <div><span>Developed by</span>Abid Ghani</div>
-    <div><span>Clinical advisory</span>Dr Maryam Ghani MBBS</div>
     <div><span>Legal</span><a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a> · <a href="./support.html">Support</a></div>
     <p class="foot-legal">© 2026 Anker<br>Not affiliated with, or endorsed by, the NHS.</p>
   </div>
