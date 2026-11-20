@@ -632,22 +632,6 @@ h1 .ln2 {
 .reset-art { width: 92px; height: 92px; flex: none; color: var(--accent-up); opacity: .8; }
 
 /* ---- the story ---- */
-.origin-paper {
-  background: #15131F; border: 1px solid var(--line); border-radius: 14px;
-  padding: 24px 26px; display: grid; gap: 11px;
-  transform: rotate(-1.4deg);
-  box-shadow: 0 24px 48px -28px rgba(0,0,0,.8);
-}
-.paper-line {
-  font-family: var(--f-display); font-style: italic; font-size: 18px;
-  color: var(--paper); position: relative; opacity: .9;
-}
-.paper-line.struck { opacity: .45; }
-.paper-line.struck::after {
-  content: ""; position: absolute; left: -4px; right: -4px; top: 54%;
-  height: 1.5px; background: var(--paper); opacity: .7;
-}
-
 /* ---- principle icons for the new three ---- */
 .ic-row { transform-origin: center; }
 .ic-row2 { animation: simplify 4s ease-in-out infinite; }
@@ -671,7 +655,6 @@ h1 .ln2 {
 @media (max-width: 860px) {
   .reset-band { flex-direction: column-reverse; align-items: flex-start; gap: 22px; padding: 30px 24px; }
   .reset-art { width: 68px; height: 68px; }
-  .origin-paper { transform: none; }
 }
 
 /* ---------- sections ---------- */
@@ -768,7 +751,7 @@ section { position: relative; }
 
 /* ---------- origin ---------- */
 
-.origin { padding-block: 92px 20px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 60px; align-items: start; }
+.origin { padding-block: 92px 20px; max-width: 44rem; }
 .origin p { color: var(--muted); font-size: 17.5px; margin: 18px 0 0; }
 .pull {
   border: 1px dashed var(--line-firm);
@@ -1013,7 +996,6 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
   .phone { margin-inline: auto; }
   .feat-grid { grid-template-columns: minmax(0,1fr); gap: 36px; }
   .shot, .shot .phone { width: 300px; margin-inline: auto; }
-  .origin { grid-template-columns: minmax(0,1fr); gap: 34px; }
   .prin { grid-template-columns: minmax(0,1fr); gap: 26px; }
   .hdr nav { display: none; }
 }
@@ -1254,15 +1236,6 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
           </blockquote>
           <figcaption>Anker App founder &amp; Resident Doctor</figcaption>
         </figure>
-      </div>
-      <div class="origin-paper" aria-hidden="true">
-        <span class="paper-line struck">Bed 12 &mdash; CT head</span>
-        <span class="paper-line struck">Bed 12 &mdash; U&amp;Es</span>
-        <span class="paper-line">Bed 13 &mdash; TTOs</span>
-        <span class="paper-line">Bed 13 &mdash; family 9am</span>
-        <span class="paper-line struck">AMU 21 &mdash; trop</span>
-        <span class="paper-line">bleep ward 9 &mdash; fluids</span>
-        <span class="paper-line">?? drug cupboard keys</span>
       </div>
     </div>
   </div>
