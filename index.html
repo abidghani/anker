@@ -50,6 +50,7 @@ html { overflow-x: clip; max-width: 100%; }
   --aqua:      #5FE3D1;
   --dawn:      rgba(255,138,92,0.10);
   --grad-type: linear-gradient(102deg, #F2EFFC 0%, #CFC2FF 34%, #8FE8DC 68%, #F2EFFC 100%);
+  --h1-line2:  #CFC2FF;
   --grad-fig:  linear-gradient(135deg, #D6CCFF, #7FF0DF);
   color-scheme: dark;
 
@@ -79,6 +80,7 @@ html { overflow-x: clip; max-width: 100%; }
   --aqua:      #11998E;
   --dawn:      rgba(255,138,92,0.09);
   --grad-type: linear-gradient(102deg, #15121F 0%, #4B35C9 36%, #0E8C82 68%, #15121F 100%);
+  --h1-line2:  #4B35C9;
   --grad-fig:  linear-gradient(135deg, #5A46DE, #0E8C82);
   color-scheme: light;
 }
@@ -257,7 +259,12 @@ h1 .pp {
   font-style: italic; white-space: nowrap;
   background: none; -webkit-text-fill-color: var(--paper); color: var(--paper);
 }
-h1 .ln2 { display: block; opacity: 0.74; white-space: nowrap; }
+h1 .ln2 {
+  display: block; white-space: nowrap;
+  color: var(--h1-line2);
+  -webkit-text-fill-color: var(--h1-line2);
+  background: none;
+}
 @media (max-width: 620px) { h1 .ln2, h1 .pp { white-space: normal; } }
 .lede {
   margin: 26px 0 0;
@@ -780,6 +787,40 @@ section { position: relative; }
 .byline { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 14px; }
 .byline span { color: var(--muted); display: block; font-size: 13px; margin-top: 2px; }
 
+/* ---------- the founder's quote ---------- */
+.quote { margin: 26px 0 0; position: relative; padding-left: 34px; }
+.quote::before {
+  content: "\201C";
+  position: absolute; left: -4px; top: -22px;
+  font-family: var(--f-display); font-size: 84px; line-height: 1;
+  color: var(--accent); opacity: .5;
+}
+.quote::after {
+  content: ""; position: absolute; left: 9px; top: 50px; bottom: 56px;
+  width: 2px; border-radius: 2px;
+  background: linear-gradient(to bottom, var(--accent), var(--aqua));
+  opacity: .5;
+}
+.quote blockquote { margin: 0; display: grid; gap: 16px; }
+.quote blockquote p {
+  margin: 0;
+  font-family: var(--f-display); font-size: 21px; line-height: 1.55;
+  color: var(--fg); opacity: .94;
+}
+.quote figcaption {
+  margin-top: 24px; display: flex; align-items: center; gap: 11px;
+  font-size: 14px; color: var(--muted);
+}
+.quote figcaption::before {
+  content: ""; width: 24px; height: 1px; flex: none; background: var(--line-firm);
+}
+@media (max-width: 560px) {
+  .quote { padding-left: 24px; }
+  .quote::before { font-size: 66px; left: -2px; top: -16px; }
+  .quote blockquote p { font-size: 19px; }
+  .quote::after { left: 5px; }
+}
+
 /* ---------- privacy ---------- */
 
 .priv-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
@@ -1205,8 +1246,14 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     <div class="origin">
       <div>
         <h2>Built by a resident doctor, for resident doctors.</h2>
-        <p>Anker started because I was tired of trying to keep track of everything on a folded piece of paper. During a busy shift, you&rsquo;re constantly adding jobs, crossing things out, answering bleeps and scribbling reminders wherever there&rsquo;s space.</p>
-        <p>I wanted something that worked like my paper list, but made it easier to see what was left to do and what needed my attention first.</p>
+        <figure class="quote">
+          <blockquote>
+            <p>Anker started because I was tired of trying to keep track of everything on a folded piece of paper. During a busy shift, you&rsquo;re constantly adding jobs, crossing things out, answering bleeps and scribbling reminders wherever there&rsquo;s space.</p>
+            <p>I wanted something that worked like my paper list, but made it easier to see what was left to do and what needed my attention first.</p>
+            <p>The Anker App not only increased my productivity, it helped me become a top performer amongst my peer group.</p>
+          </blockquote>
+          <figcaption>Anker App founder &amp; Resident Doctor</figcaption>
+        </figure>
       </div>
       <div class="origin-paper" aria-hidden="true">
         <span class="paper-line struck">Bed 12 &mdash; CT head</span>
