@@ -249,9 +249,9 @@ h1 .pp { font-style: italic; white-space: nowrap; color: var(--paper); }
 .hl { color: var(--paper); font-style: italic; }
 h1 .ln2 { display: block; white-space: nowrap; }
 @media (max-width: 620px) {
-  /* Scale the headline with the viewport so "Just a little smarter." stays
-     on one line instead of orphaning "Just a". */
-  h1 { font-size: clamp(32px, 10.4vw, 44px); }
+  /* Scale the headline with the viewport so each line holds together
+     instead of wrapping mid-phrase on a narrow screen. */
+  h1 { font-size: clamp(34px, 11.3vw, 44px); }
   h1 .ln2, h1 .pp { white-space: normal; }
 }
 .lede {
@@ -990,7 +990,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="hero-in">
       <div>
-        <h1>Your paper list.<span class="ln2">Just a little <span class="pp">smarter</span>.</span></h1>
+        <h1>Your paper list.<span class="ln2">Just got <span class="pp">Smarter</span></span></h1>
         <div class="hero-cta">
           <a class="badge-link" href="https://apps.apple.com/gb/app/anker/id6760626289" aria-label="Download Anker on the App Store"><img class="badge-white" src="./appstore-badge-white.svg" alt="Download on the App Store" width="162" height="54"><img class="badge-black" src="./appstore-badge-black.svg" alt="Download on the App Store" width="162" height="54"></a>
         </div>
