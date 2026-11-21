@@ -263,20 +263,6 @@ h1 .ln2 { display: block; white-space: nowrap; }
   max-width: 34em;
 }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-.live-note {
-  display: flex; align-items: center; gap: 10px;
-  margin-top: 26px; font-size: 14px; color: var(--muted);
-}
-.pulse {
-  width: 8px; height: 8px; border-radius: 50%; flex: none;
-  background: var(--accent-up);
-  box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-up) 60%, transparent);
-  animation: pulse 2.6s ease-out infinite;
-}
-@keyframes pulse {
-  70% { box-shadow: 0 0 0 9px transparent; }
-  100% { box-shadow: 0 0 0 0 transparent; }
-}
 
 
 /* Free is an objection remover, so it sits with the download button rather
@@ -1018,7 +1004,6 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
           <a class="badge-link" href="https://apps.apple.com/gb/app/anker/id6760626289" aria-label="Download Anker on the App Store"><img class="badge-white" src="./appstore-badge-white.svg" alt="Download on the App Store" width="162" height="54"><img class="badge-black" src="./appstore-badge-black.svg" alt="Download on the App Store" width="162" height="54"></a>
         </div>
         <p class="free-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg><b>Free to install and use.</b> <span>No account needed.</span></p>
-        <p class="live-note"><span class="pulse" aria-hidden="true"></span> The phone is live. Switch views, tick a job, add a note.</p>
       </div>
 
       <div class="hero-phone-col">
