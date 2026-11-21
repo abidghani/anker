@@ -248,6 +248,7 @@ h1 {
   color: var(--fg);
 }
 h1 .pp { font-style: italic; white-space: nowrap; color: var(--paper); }
+.hl { color: var(--paper); }
 h1 .ln2 { display: block; white-space: nowrap; }
 @media (max-width: 620px) {
   /* Scale the headline with the viewport so "Just a little smarter." stays
@@ -557,7 +558,7 @@ h1 .ln2 { display: block; white-space: nowrap; }
 .problem { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .problem-in { padding-block: 72px; display: grid; gap: 22px; max-width: 1120px; }
 .problem h2 { font-size: clamp(30px, 4.4vw, 48px); line-height: 1.1; }
-.problem h2 span { display: block; color: var(--muted); }
+.problem h2 .ln2 { display: block; color: var(--muted); }
 .problem p { margin: 0; font-size: 18.5px; line-height: 1.6; color: var(--muted); max-width: 40em; }
 
 /* ---- feature rows now lead with a bold phrase ---- */
@@ -1050,7 +1051,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
   <!-- ===== the problem ===== -->
   <div class="problem">
     <div class="wrap problem-in">
-      <h2>The jobs keep coming.<span>The list keeps growing.</span></h2>
+      <h2>The jobs <span class="hl">keep</span> coming.<span class="ln2">The list keeps growing.</span></h2>
       <p>Between ward rounds, jobs, bleeps and constant interruptions, it&rsquo;s easy for your list to become a mess. Anker keeps everything together, so you can see what needs doing and what you&rsquo;ve already done.</p>
     </div>
   </div>
@@ -1058,7 +1059,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
   <!-- ===== Patients ===== -->
   <section id="patients" class="wrap">
       <div class="feat">
-        <h2>Know what&rsquo;s done, see what&rsquo;s left.</h2>
+        <h2>Know what&rsquo;s <span class="hl">done</span>, see what&rsquo;s left.</h2>
         <p>Keep your patients and their jobs together in one simple list. Tick off tasks as you go, flag the ones that can&rsquo;t wait, and switch to All Jobs to see everything outstanding across your wards.</p>
         <div class="feat-grid">
           <ul class="feat-list">
@@ -1092,7 +1093,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
   <!-- ===== Bleep tracker ===== -->
   <section id="bleeps" class="wrap">
       <div class="feat">
-        <h2>Because one bleep is never the last.</h2>
+        <h2>Because one <span class="hl">bleep</span> is never the last.</h2>
         <p>Log each bleep as it comes in, with the time received and a quick note about what it&rsquo;s for. Keep track of which ones you&rsquo;ve answered, which are still outstanding and which have been resolved.</p>
         <div class="feat-grid">
           <div class="bleeps" aria-hidden="true">
@@ -1123,7 +1124,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
   <!-- ===== Notes ===== -->
   <section id="notes" class="wrap">
       <div class="feat">
-        <h2>A place for everything that isn&rsquo;t a job yet.</h2>
+        <h2>A place for <span class="hl">everything</span> that isn&rsquo;t a job yet.</h2>
         <p>A digital scribble pad for all the little things you need to remember during a shift. Jot something down, add a photo, and come back to it when you need it.</p>
         <div class="feat-grid">
           <p class="feat-aside">Not everything you need to remember is a patient job. Sometimes it&rsquo;s a message, a reminder, or something someone tells you in passing.</p>
@@ -1180,7 +1181,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
   <!-- ===== Privacy ===== -->
   <section id="privacy" class="wrap">
     <div class="sec-head">
-      <h2>Your patients&rsquo; details stay with you.</h2>
+      <h2>Your patients&rsquo; details stay with <span class="hl">you</span>.</h2>
       <p>Anker has no account, no login and no clinical sync. Your information stays on your device rather than being uploaded to an Anker server.</p>
     </div>
     <div class="nots">
@@ -1221,7 +1222,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
 
   <!-- ===== principles ===== -->
   <div class="wrap">
-    <div class="sec-head"><h2>Our three principles.</h2></div>
+    <div class="sec-head"><h2>Our <span class="hl">three</span> principles.</h2></div>
     <div class="prin">
       <div class="prin-card">
         <span class="prin-ic"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="27" r="13.5" stroke/><path d="M19.5 7.5h9M24 13.5V7.5M34 17l2.5-2.5" stroke/><line class="ic-hand" x1="24" y1="27" x2="24" y2="17.5" stroke/></svg></span>
