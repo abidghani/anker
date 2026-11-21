@@ -46,6 +46,7 @@ html { overflow-x: clip; max-width: 100%; }
   --glow:      radial-gradient(60% 50% at 70% 18%, rgba(126,110,242,0.20), transparent 70%);
   --bezel:     linear-gradient(160deg, #2C2740, #141120);
   --aqua:      #5FE3D1;
+  --paper:     #CFC6AE;
   --dawn:      rgba(255,138,92,0.10);
   --grad-type: linear-gradient(102deg, #F2EFFC 0%, #CFC2FF 34%, #8FE8DC 68%, #F2EFFC 100%);
   --grad-fig:  linear-gradient(135deg, #D6CCFF, #7FF0DF);
@@ -74,6 +75,7 @@ html { overflow-x: clip; max-width: 100%; }
   --glow:      radial-gradient(60% 50% at 70% 18%, rgba(126,110,242,0.13), transparent 70%);
   --bezel:     linear-gradient(160deg, #2C2740, #141120);
   --aqua:      #11998E;
+  --paper:     #7D6E49;
   --dawn:      rgba(255,138,92,0.09);
   --grad-type: linear-gradient(102deg, #15121F 0%, #4B35C9 36%, #0E8C82 68%, #15121F 100%);
   --grad-fig:  linear-gradient(135deg, #5A46DE, #0E8C82);
@@ -245,7 +247,7 @@ h1 {
   text-wrap: normal;
   color: var(--fg);
 }
-h1 .pp { font-style: italic; white-space: nowrap; }
+h1 .pp { font-style: italic; white-space: nowrap; color: var(--paper); }
 h1 .ln2 { display: block; white-space: nowrap; }
 @media (max-width: 620px) {
   /* Scale the headline with the viewport so "Just a little smarter." stays
@@ -561,8 +563,8 @@ h1 .ln2 { display: block; white-space: nowrap; }
 /* ---------- additions for the rewrite ---------- */
 
 .by-line {
-  margin: 14px 0 0; font-size: 15px; line-height: 1.6;
-  color: var(--muted); opacity: .72;
+  margin: 16px 0 0; font-size: 19px; line-height: 1.62;
+  color: var(--paper);
 }
 
 /* ---- the problem ---- */
