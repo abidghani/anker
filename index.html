@@ -688,10 +688,6 @@ section { position: relative; }
 }
 .feat { padding-bottom: 20px; }
 .feat h2 { font-size: clamp(29px, 3.6vw, 40px); line-height: 1.14; }
-.feat .kicker {
-  font-family: var(--f-mono); font-size: 12px; color: var(--aqua);
-  display: block; margin-bottom: 14px; letter-spacing: 0.04em;
-}
 .feat > p { color: var(--muted); font-size: 17.5px; margin: 18px 0 0; max-width: 38em; }
 
 .feat-grid {
@@ -1010,9 +1006,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
 
 @media (max-width: 560px) {
   .rail { grid-template-columns: minmax(0,1fr); }
-  .rail-time { padding-top: 70px; }
-  .rail-time::before, .rail-time::after { display: none; }
-  .rail-time span { color: var(--accent-up); }
+  .rail-time { display: none; }
   .priv-grid { grid-template-columns: minmax(0,1fr); }
   .phone { width: 100%; max-width: 330px; }
   .shot, .shot .phone { width: 100%; max-width: 300px; }
@@ -1114,7 +1108,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     <div class="rail">
       <div class="rail-time"><span>02:47</span></div>
       <div class="feat">
-        <h2><span class="kicker">Patients</span>Know what&rsquo;s done, see what&rsquo;s left.</h2>
+        <h2>Know what&rsquo;s done, see what&rsquo;s left.</h2>
         <p>Keep your patients and their jobs together in one simple list. Tick off tasks as you go, flag the ones that can&rsquo;t wait, and switch to All Jobs to see everything outstanding across your wards.</p>
         <div class="feat-grid">
           <ul class="feat-list">
@@ -1151,7 +1145,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     <div class="rail">
       <div class="rail-time"><span>03:12</span></div>
       <div class="feat">
-        <h2><span class="kicker">Bleep tracker</span>Because one bleep is never the last.</h2>
+        <h2>Because one bleep is never the last.</h2>
         <p>Log each bleep as it comes in, with the time received and a quick note about what it&rsquo;s for. Keep track of which ones you&rsquo;ve answered, which are still outstanding and which have been resolved.</p>
         <div class="feat-grid">
           <div class="bleeps" aria-hidden="true">
@@ -1185,7 +1179,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     <div class="rail">
       <div class="rail-time"><span>04:30</span></div>
       <div class="feat">
-        <h2><span class="kicker">Notes</span>A place for everything that isn&rsquo;t a job yet.</h2>
+        <h2>A place for everything that isn&rsquo;t a job yet.</h2>
         <p>A digital scribble pad for all the little things you need to remember during a shift. Jot something down, add a photo, and come back to it when you need it.</p>
         <div class="feat-grid">
           <p class="feat-aside">Not everything you need to remember is a patient job. Sometimes it&rsquo;s a message, a reminder, or something someone tells you in passing.</p>
