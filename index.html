@@ -28,9 +28,8 @@ html { overflow-x: clip; max-width: 100%; }
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;450;500;600&display=swap">
 
 <style>
-/* Layout: single 1120px column; three feature sections hang off a left time rail
-   that runs the length of one night shift (02:47 -> 03:12 -> 04:30). Dark-first,
-   mirroring the app's Nocturne theme; light values mirror Nocturne Light. */
+/* Layout: a single 1120px column. Dark-first, mirroring the app's Nocturne
+   theme; light values mirror Nocturne Light. */
 
 :root {
   --bg:        #0B0A11;
@@ -664,28 +663,7 @@ section { position: relative; }
 .sec-head h2 { font-size: clamp(31px, 4vw, 43px); line-height: 1.12; }
 .sec-head p { color: var(--muted); font-size: 18px; margin: 18px 0 0; }
 
-/* time rail */
-.rail { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 0; }
-.rail-time {
-  position: relative;
-  padding-top: 92px;
-}
-.rail-time span {
-  font-family: var(--f-mono); font-size: 12px; color: var(--accent-up);
-  position: relative; z-index: 2; display: block;
-  padding-left: 22px; letter-spacing: 0.02em;
-}
-.rail-time::before {
-  content: ""; position: absolute; left: 5px; top: 0; bottom: -40px;
-  width: 1px; background: var(--line-firm);
-}
-.rail-time::after {
-  content: ""; position: absolute; left: 1px; top: 97px;
-  width: 9px; height: 9px; border-radius: 50%;
-  background: var(--accent); z-index: 3;
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent),
-              0 0 22px 2px color-mix(in srgb, var(--accent) 55%, transparent);
-}
+.feat h2 { padding-top: 92px; }
 .feat { padding-bottom: 20px; }
 .feat h2 { font-size: clamp(29px, 3.6vw, 40px); line-height: 1.14; }
 .feat > p { color: var(--muted); font-size: 17.5px; margin: 18px 0 0; max-width: 38em; }
@@ -1005,8 +983,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
 }
 
 @media (max-width: 560px) {
-  .rail { grid-template-columns: minmax(0,1fr); }
-  .rail-time { display: none; }
+  .feat h2 { padding-top: 60px; }
   .priv-grid { grid-template-columns: minmax(0,1fr); }
   .phone { width: 100%; max-width: 330px; }
   .shot, .shot .phone { width: 100%; max-width: 300px; }
@@ -1105,8 +1082,6 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
 
   <!-- ===== Patients ===== -->
   <section id="patients" class="wrap">
-    <div class="rail">
-      <div class="rail-time"><span>02:47</span></div>
       <div class="feat">
         <h2>Know what&rsquo;s done, see what&rsquo;s left.</h2>
         <p>Keep your patients and their jobs together in one simple list. Tick off tasks as you go, flag the ones that can&rsquo;t wait, and switch to All Jobs to see everything outstanding across your wards.</p>
@@ -1137,13 +1112,10 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
           </div>
         </div>
       </div>
-    </div>
   </section>
 
   <!-- ===== Bleep tracker ===== -->
   <section id="bleeps" class="wrap">
-    <div class="rail">
-      <div class="rail-time"><span>03:12</span></div>
       <div class="feat">
         <h2>Because one bleep is never the last.</h2>
         <p>Log each bleep as it comes in, with the time received and a quick note about what it&rsquo;s for. Keep track of which ones you&rsquo;ve answered, which are still outstanding and which have been resolved.</p>
@@ -1171,13 +1143,10 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
           </div>
         </div>
       </div>
-    </div>
   </section>
 
   <!-- ===== Notes ===== -->
   <section id="notes" class="wrap">
-    <div class="rail">
-      <div class="rail-time"><span>04:30</span></div>
       <div class="feat">
         <h2>A place for everything that isn&rsquo;t a job yet.</h2>
         <p>A digital scribble pad for all the little things you need to remember during a shift. Jot something down, add a photo, and come back to it when you need it.</p>
@@ -1199,7 +1168,6 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
           </div>
         </div>
       </div>
-    </div>
   </section>
 
   <!-- ===== end of shift ===== -->
