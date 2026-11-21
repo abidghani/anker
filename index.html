@@ -42,14 +42,12 @@ html { overflow-x: clip; max-width: 100%; }
   --accent:    #7E6EF2;
   --accent-up: #A89CFF;
   --urgent:    #FF3B30;
-  --paper:     #CFC6AE;
   --shadow:    0 24px 60px -24px rgba(0,0,0,0.85);
   --glow:      radial-gradient(60% 50% at 70% 18%, rgba(126,110,242,0.20), transparent 70%);
   --bezel:     linear-gradient(160deg, #2C2740, #141120);
   --aqua:      #5FE3D1;
   --dawn:      rgba(255,138,92,0.10);
   --grad-type: linear-gradient(102deg, #F2EFFC 0%, #CFC2FF 34%, #8FE8DC 68%, #F2EFFC 100%);
-  --h1-line2:  #CFC2FF;
   --grad-fig:  linear-gradient(135deg, #D6CCFF, #7FF0DF);
   color-scheme: dark;
 
@@ -72,14 +70,12 @@ html { overflow-x: clip; max-width: 100%; }
   --accent:    #6A58E8;
   --accent-up: #5A46DE;
   --urgent:    #D92B20;
-  --paper:     #8A7A52;
   --shadow:    0 24px 60px -28px rgba(40,30,90,0.30);
   --glow:      radial-gradient(60% 50% at 70% 18%, rgba(126,110,242,0.13), transparent 70%);
   --bezel:     linear-gradient(160deg, #2C2740, #141120);
   --aqua:      #11998E;
   --dawn:      rgba(255,138,92,0.09);
   --grad-type: linear-gradient(102deg, #15121F 0%, #4B35C9 36%, #0E8C82 68%, #15121F 100%);
-  --h1-line2:  #4B35C9;
   --grad-fig:  linear-gradient(135deg, #5A46DE, #0E8C82);
   color-scheme: light;
 }
@@ -247,24 +243,16 @@ h1, h2, h3 {
 h1 {
   font-size: clamp(44px, 5.9vw, 78px); line-height: 1.02;
   text-wrap: normal;
-  background: var(--grad-type);
-  background-size: 180% 100%;
-  -webkit-background-clip: text; background-clip: text;
-  color: transparent;
-  animation: sheen 14s ease-in-out infinite alternate;
+  color: var(--fg);
 }
-@keyframes sheen { to { background-position: 100% 0; } }
-h1 .pp {
-  font-style: italic; white-space: nowrap;
-  background: none; -webkit-text-fill-color: var(--paper); color: var(--paper);
+h1 .pp { font-style: italic; white-space: nowrap; }
+h1 .ln2 { display: block; white-space: nowrap; }
+@media (max-width: 620px) {
+  /* Scale the headline with the viewport so "Just a little smarter." stays
+     on one line instead of orphaning "Just a". */
+  h1 { font-size: clamp(32px, 10.4vw, 44px); }
+  h1 .ln2, h1 .pp { white-space: normal; }
 }
-h1 .ln2 {
-  display: block; white-space: nowrap;
-  color: var(--h1-line2);
-  -webkit-text-fill-color: var(--h1-line2);
-  background: none;
-}
-@media (max-width: 620px) { h1 .ln2, h1 .pp { white-space: normal; } }
 .lede {
   margin: 26px 0 0;
   font-size: 19px;
@@ -272,7 +260,6 @@ h1 .ln2 {
   color: var(--muted);
   max-width: 34em;
 }
-.lede strong { color: var(--fg); font-weight: 500; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 .live-note {
   display: flex; align-items: center; gap: 10px;
@@ -574,8 +561,8 @@ h1 .ln2 {
 /* ---------- additions for the rewrite ---------- */
 
 .by-line {
-  margin: 16px 0 0; font-family: var(--f-display); font-style: italic;
-  font-size: 19px; color: var(--paper); opacity: .92;
+  margin: 14px 0 0; font-size: 15px; line-height: 1.6;
+  color: var(--muted); opacity: .72;
 }
 
 /* ---- the problem ---- */
@@ -1023,7 +1010,7 @@ footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
     <div class="hero-in">
       <div>
         <h1>Your paper list.<span class="ln2">Just a little <span class="pp">smarter</span>.</span></h1>
-        <p class="lede">A simple task list for doctors. Keep track of your <strong>patients, jobs, notes and bleeps</strong>, all in one place.</p>
+        <p class="lede">A simple task list for doctors. Keep track of your patients, jobs, notes and bleeps, all in one place.</p>
         <p class="by-line">Built by a hospital doctor, for the reality of a busy shift.</p>
         <div class="hero-cta">
           <a class="badge-link" href="https://apps.apple.com/gb/app/anker/id6760626289" aria-label="Download Anker on the App Store"><img class="badge-white" src="./appstore-badge-white.svg" alt="Download on the App Store" width="162" height="54"><img class="badge-black" src="./appstore-badge-black.svg" alt="Download on the App Store" width="162" height="54"></a>
